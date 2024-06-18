@@ -215,7 +215,7 @@ const fetchWorkload = (teacher, gr, discz, type, result) => {
 };
 const fetchJournal = (date1, date2, workload, result) => {
   db.query(
-    "SELECT journal.id, journal.date, journal.workload, journal.student, DATE_FORMAT(`date`, '%e.%m.%Y') AS dateform, type_activity.type, journal.otm_posh, journal.otm_usp, `task`, journal.number_classes   FROM journal join workload ON journal.workload = workload.id join type_activity ON workload.load = type_activity.id  join student ON journal.student = student.id WHERE (journal.date BETWEEN ? AND ?) AND journal.workload IN (?) ORDER BY `date` ASC, journal.number_classes ASC",
+    "SELECT journal.id, journal.date, journal.workload, journal.student, DATE_FORMAT(`date`, '%e.%m.%Y') AS dateform, type_activity.type, journal.otm_posh, journal.otm_usp, `task`, journal.number_classes   FROM journal join workload ON journal.workload = workload.id join type_activity ON workload.load = type_activity.id  join student ON journal.student = student.id WHERE (journal.date BETWEEN ? AND ?) AND journal.workload IN (?) ORDER BY `date` ASC",
     [date1, date2, workload],
     (err, results) => {
       if (err) {
